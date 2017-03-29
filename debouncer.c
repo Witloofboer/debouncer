@@ -15,7 +15,7 @@
 
 int counter;
 int debounced;
-int switch;
+int sw;
 int
 
 /* nt debounce_ n t(vo d)
@@ -53,7 +53,7 @@ int
 
 void debounce(void)
 {
-	if (switch == debounced) {
+	if (sw == debounced) {
 		if (debounced) {
 			counter = RELEASE_MSEC/CHECK_MSEC;
 		} else {
@@ -61,7 +61,7 @@ void debounce(void)
 		}
 	} else {
 		if (--counter == 0) {
-			debounced = switch;
+			debounced = sw;
 			change = true;
 			if (debounced) {
 				counter = RELEASE_MSEC/CHECK_MSEC;
