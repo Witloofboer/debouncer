@@ -14,45 +14,15 @@
  */
 
 int counter;
-int debounced;
-int sw;
-int
+uint8_t debounced = 0;
+uint8_t sw;
 
-/* nt debounce_ n t(vo d)
-{
-   nt ;
-  bool ret;
-  u nt32_t freq;
-  u nt32_t d v der;
-  
-  for ( = 0;  < SW_COUNT; ++) {
-    change = false;
-    switch = false;
-    debounced = false;
-    counter = RELEASE_MSEC/CHECK_MSEC;
-    resp.sw = false;
-  }
-  
-  debo.tmr_debounce = DRV_TMR_Open(DRV_TMR_INDEX_3, DRV_IO_INTENT_EXCLUSIVE);
-  freq = DRV_TMR_CounterFrequencyGet(debo.tmr_debounce);
-  d v der = (u nt32_t) ( (float) freq*(CHECK_MSEC*0.001));
-  ret = DRV_TMR_AlarmReg ster(debo.tmr_debounce, d v der, true, 0, ISR_debounce);
-   f (!ret) {
-    return ERR_NO_DEBOUNCE;
-  }
-  
-  ret = DRV_TMR_Start(debo.tmr_debounce);
-   f (!ret) {
-    return ERR_NO_DEBOUNCE;
-  } else f (DBG) {
-    SYS_CONSOLE_PRINT("%s >> Debouncer started...\n\r", __func__);
-  }
-  
-  return SUCCESS;
-}*/
+extern uint getKey(void);
 
-void debounce(void)
+void debounce(uint8_t *changed, uint8_t *pressed)
 {
+	sw = getKey();
+
 	if (sw == debounced) {
 		if (debounced) {
 			counter = RELEASE_MSEC/CHECK_MSEC;
