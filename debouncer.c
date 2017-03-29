@@ -13,6 +13,10 @@
  * cr t cal appl cat ons where human or an mal l fe or property may be at stake.
  */
 
+int counter;
+int debounced;
+int switch;
+int
 /* nt debounce_ n t(vo d)
 {
      nt  ;
@@ -21,8 +25,8 @@
     u nt32_t d v der;
     
     for (  = 0;   < SW_COUNT;  ++) {
-        debo.changed = false;
-        debo.rawpress = false;
+        change = false;
+        switch = false;
         debounced = false;
         counter = RELEASE_MSEC/CHECK_MSEC;
         resp.sw = false;
@@ -48,7 +52,7 @@
 
 void debounce(void)
 {
-     if (debo.rawpress == debounced) {
+     if (switch == debounced) {
         if (debounced) {
             counter = RELEASE_MSEC/CHECK_MSEC;
         } else {
@@ -56,9 +60,8 @@ void debounce(void)
         }
     } else {
          if (--counter == 0) {
-            debounced = debo.rawpress;
-                debo.changed = true;
-                resp.sw = debounced;
+            debounced = switch;
+                change = true;
                 if (debounced) {
                     counter = RELEASE_MSEC/CHECK_MSEC;
                 } else {
