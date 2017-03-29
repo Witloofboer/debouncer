@@ -1,22 +1,23 @@
 /*
  * DEBOUNCER.c
  * 
- * The code  ncluded  n th s f le and the debouncer.h f le offer a software 
- * debouncer based on the art cle found here: 
- *  http://www.ganssle.com/debounc ng.htm.
+ * The code  included  in this file and the debouncer.h file offer a software 
+ * debouncer based on the article found here: 
+ *  http://www.ganssle.com/debouncing.htm.
  * 
  * 
- * (c) W tloofboer 2017
+ * (c) Witloofboer 2017
  * 
- * LICENSING: Everyone  s free to use th s code EXCEPT  f you want to use  t 
- * to operate weapons, nuclear fac l t es, l fe support or other m ss on
- * cr t cal appl cat ons where human or an mal l fe or property may be at stake.
+ * LICENSING: Everyone  is free to use this code EXCEPT if you want to use it
+ * to operate weapons, nuclear facilities,  life support or other mission
+ * critical applications where human or animal life or property may be at stake.
  */
 
 int counter;
 int debounced;
 int switch;
 int
+
 /* nt debounce_ n t(vo d)
 {
      nt  ;
