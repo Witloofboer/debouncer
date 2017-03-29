@@ -17,7 +17,7 @@ int counter;
 uint8_t debounced = 0;
 uint8_t sw;
 
-extern uint getKey(void);
+extern uint8_t getKey(void);
 
 void debounce(uint8_t *changed, uint8_t *pressed)
 {
