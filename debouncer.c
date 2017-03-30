@@ -13,30 +13,26 @@
  * critical applications where human or animal life or property may be at stake.
  */
 
-int counter;
-uint8_t debounced = 0;
-uint8_t sw;
-
 extern uint8_t getKey(void);
 
-void debounce(uint8_t *changed, uint8_t *pressed)
+void debounce(uint8_t *changed, uint8_t *pressed, debouncer_t debouncer)
 {
-	sw = getKey();
+	debouncer.sw = getKey();
 
-	if (sw == debounced) {
-		if (debounced) {
-			counter = RELEASE_MSEC/CHECK_MSEC;
+	if (debouncer.sw == debouncer.debounced) {
+		if (debouncer.debounced) {
+			debouncer.counter = RELEASE_MSEC/CHECK_MSEC;
 		} else {
-			counter = PRESS_MSEC/CHECK_MSEC;
+			debouncer.counter = PRESS_MSEC/CHECK_MSEC;
 		}
 	} else {
-		if (--counter == 0) {
-			debounced = sw;
+		if (--debouncer.counter == 0) {
+			debouncer.debounced = sw;
 			change = true;
-			if (debounced) {
-				counter = RELEASE_MSEC/CHECK_MSEC;
+			if (debouncer.debounced) {
+				debouncer.counter = RELEASE_MSEC/CHECK_MSEC;
 			} else {
-				counter = PRESS_MSEC/CHECK_MSEC;
+				debouncer.counter = PRESS_MSEC/CHECK_MSEC;
 			}
 		}
 	} 

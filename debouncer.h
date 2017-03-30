@@ -24,4 +24,10 @@
 
 void debouncer(uint8_t *changed, uint8_t *pressed);
 
+typedef struct debouncer_t {
+	int counter;
+	uint8_t debounced = 0;
+	uint8_t sw;
+} debouncer_t;
+
 #endif
