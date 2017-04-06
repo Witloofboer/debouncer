@@ -1,8 +1,8 @@
 /*
  * DEBOUNCER.c
  * 
- * The code included in this file and the debouncer.h file offer a software 
- * debouncer based on the article found here: 
+ * The code included in this file and the debouncer.h file offer a software
+ * debouncer based on the article found here:
  * http://www.ganssle.com/debouncing.htm.
  * 
  * 
@@ -13,27 +13,28 @@
  * critical applications where human or animal life or property may be at stake.
  */
 
-extern uint8_t getKey(void);
+#include "debouncer.h"
 
-void debounce(uint8_t *changed, uint8_t *pressed, debouncer_t debouncer)
+
+void debounce(debouncer_t *debouncer)
 {
-	debouncer.sw = getKey();
+	debouncer->sw = Button_GetValue();
 
-	if (debouncer.sw == debouncer.debounced) {
-		if (debouncer.debounced) {
-			debouncer.counter = RELEASE_MSEC/CHECK_MSEC;
+	if (debouncer->sw == debouncer->debounced) {
+		if (debouncer->debounced) {
+			debouncer->counter = RELEASE_MSEC/CHECK_MSEC;
 		} else {
-			debouncer.counter = PRESS_MSEC/CHECK_MSEC;
+			debouncer->counter = PRESS_MSEC/CHECK_MSEC;
 		}
 	} else {
-		if (--debouncer.counter == 0) {
-			debouncer.debounced = sw;
-			change = true;
-			if (debouncer.debounced) {
-				debouncer.counter = RELEASE_MSEC/CHECK_MSEC;
+		if (--debouncer->counter == 0) {
+			debouncer->debounced = debouncer->sw;
+			debouncer->change = true;
+			if (debouncer->debounced) {
+				debouncer->counter = RELEASE_MSEC/CHECK_MSEC;
 			} else {
-				debouncer.counter = PRESS_MSEC/CHECK_MSEC;
+				debouncer->counter = PRESS_MSEC/CHECK_MSEC;
 			}
 		}
-	} 
+	}
 }

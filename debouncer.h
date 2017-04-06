@@ -14,7 +14,6 @@
  */
 
 // Prevent multiple inclusions
-//#pragma once
 #ifndef DEBOUNCER_H
 #define DEBOUNCER_H
 
@@ -22,12 +21,18 @@
 #define PRESS_MSEC 10           // For pressed, wait 10 msec stable
 #define RELEASE_MSEC 100        // For release, wait 100 msec stable
 
-void debouncer(uint8_t *changed, uint8_t *pressed);
+#define true 1
+#define false 0
 
-typedef struct debouncer_t {
-	int counter,
-	uint8_t debounced = 0,
-	uint8_t sw
+typedef struct debouncer {
+	int counter;
+	int debounced;
+	int sw;
+    int change;
 } debouncer_t;
+
+extern debouncer_t debo;
+
+void debounce(debouncer_t *debouncer);
 
 #endif
