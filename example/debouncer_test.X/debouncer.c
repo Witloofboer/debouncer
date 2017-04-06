@@ -14,13 +14,12 @@
  */
 
 #include "debouncer.h"
-#include "mcc_generated_files/pin_manager.h"
 
 //extern uint8_t getKey(void);
 
 void debounce(debouncer_t *debouncer)
 {
-	debouncer->sw = Button_GetValue();
+	debouncer->sw = debouncer->getKey();
 
 	if (debouncer->sw == debouncer->debounced) {
 		if (debouncer->debounced) {

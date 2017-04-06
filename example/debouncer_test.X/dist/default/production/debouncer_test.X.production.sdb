@@ -11,9 +11,11 @@
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"21 Z:\phd\microcontroller\debouncer_test.X\debouncer.c
+"20 Z:\phd\microcontroller\debouncer_test.X\debouncer.c
 [v _debounce debounce `(v  1 e 1 0 ]
-"16 Z:\phd\microcontroller\debouncer_test.X\main.c
+"17 Z:\phd\microcontroller\debouncer_test.X\main.c
+[v _button button `(i  1 e 2 0 ]
+"23
 [v _main main `(v  1 e 1 0 ]
 "51 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
@@ -33,19 +35,19 @@
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 "135
 [v _TMR0_CallBack TMR0_CallBack `(v  1 e 1 0 ]
-"148
+"147
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
-"152
+"151
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-[s S241 . 1 `uc 1 INTEDG 1 0 :1:0 
+[s S238 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "348 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f18345.h
-[u S246 . 1 `S241 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES246  1 e 1 @11 ]
-[s S289 . 1 `uc 1 RC0 1 0 :1:0 
+[u S243 . 1 `S238 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES243  1 e 1 @11 ]
+[s S208 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -55,8 +57,8 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "471
-[u S298 . 1 `S289 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES298  1 e 1 @14 ]
+[u S217 . 1 `S208 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES217  1 e 1 @14 ]
 [s S74 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
@@ -105,7 +107,7 @@
 [v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
 "2241
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S254 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S251 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -113,24 +115,12 @@
 `uc 1 LATA5 1 0 :1:5 
 ]
 "2256
-[u S261 . 1 `S254 1 . 1 0 ]
-[v _LATAbits LATAbits `VES261  1 e 1 @268 ]
+[u S258 . 1 `S251 1 . 1 0 ]
+[v _LATAbits LATAbits `VES258  1 e 1 @268 ]
 "2285
 [v _LATB LATB `VEuc  1 e 1 @269 ]
 "2323
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S165 . 1 `uc 1 LATC0 1 0 :1:0 
-`uc 1 LATC1 1 0 :1:1 
-`uc 1 LATC2 1 0 :1:2 
-`uc 1 LATC3 1 0 :1:3 
-`uc 1 LATC4 1 0 :1:4 
-`uc 1 LATC5 1 0 :1:5 
-`uc 1 LATC6 1 0 :1:6 
-`uc 1 LATC7 1 0 :1:7 
-]
-"2340
-[u S174 . 1 `S165 1 . 1 0 ]
-[v _LATCbits LATCbits `VES174  1 e 1 @270 ]
 "2868
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "2912
@@ -159,15 +149,15 @@
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @2334 ]
 "12618
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2335 ]
-[s S186 debouncer 8 `i 1 counter 2 0 `i 1 debounced 2 2 `i 1 sw 2 4 `i 1 change 2 6 ]
-"14 Z:\phd\microcontroller\debouncer_test.X\main.c
-[v _debo debo `S186  1 e 8 0 ]
+[s S166 debouncer 10 `i 1 counter 2 0 `i 1 debounced 2 2 `i 1 sw 2 4 `i 1 change 2 6 `*.37(i 1 getKey 2 8 ]
+"21 Z:\phd\microcontroller\debouncer_test.X\main.c
+[v _debo debo `S166  1 e 10 0 ]
 "59 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"16 Z:\phd\microcontroller\debouncer_test.X\main.c
+"23 Z:\phd\microcontroller\debouncer_test.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"36
+"42
 } 0
 "76 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -189,11 +179,11 @@
 {
 "94
 } 0
-"148
+"147
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37v  1 p 2 0 ]
-"150
+"149
 } 0
 "51 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -218,21 +208,26 @@
 "135
 [v _TMR0_CallBack TMR0_CallBack `(v  1 e 1 0 ]
 {
-"146
+"145
 } 0
-"21 Z:\phd\microcontroller\debouncer_test.X\debouncer.c
+"20 Z:\phd\microcontroller\debouncer_test.X\debouncer.c
 [v _debounce debounce `(v  1 e 1 0 ]
 {
-[s S186 debouncer 8 `i 1 counter 2 0 `i 1 debounced 2 2 `i 1 sw 2 4 `i 1 change 2 6 ]
-[v debounce@debouncer debouncer `*.4S186  1 a 1 wreg ]
-[v debounce@debouncer debouncer `*.4S186  1 a 1 wreg ]
-"23
-"21
-[v debounce@debouncer debouncer `*.4S186  1 a 1 4 ]
-"42
+[s S166 debouncer 10 `i 1 counter 2 0 `i 1 debounced 2 2 `i 1 sw 2 4 `i 1 change 2 6 `*.37(i 1 getKey 2 8 ]
+[v debounce@debouncer debouncer `*.4S166  1 a 1 wreg ]
+[v debounce@debouncer debouncer `*.4S166  1 a 1 wreg ]
+"22
+"20
+[v debounce@debouncer debouncer `*.4S166  1 a 1 8 ]
+"41
 } 0
-"152 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/tmr0.c
+"17 Z:\phd\microcontroller\debouncer_test.X\main.c
+[v _button button `(i  1 e 2 0 ]
+{
+"19
+} 0
+"151 Z:\phd\microcontroller\debouncer_test.X\mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
-"155
+"154
 } 0

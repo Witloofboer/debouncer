@@ -1,15 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
+[v F7813 `(i ~T0 @X0 0 tf ]
 "30 debouncer.h
-[s S958 `i 1 `i 1 `i 1 `i 1 ]
-[n S958 debouncer counter debounced sw change ]
-"460 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f18345.h
-[s S32 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S32 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"459
-[u S31 `S32 1 ]
-[n S31 . . ]
-"471
-[v _PORTCbits `VS31 ~T0 @X0 0 e@14 ]
+[s S958 `i 1 `i 1 `i 1 `i 1 `*F7813 1 ]
+[n S958 debouncer counter debounced sw change getKey ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7527,94 +7520,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;debouncer.h: 32: int debounced;
 [; ;debouncer.h: 33: int sw;
 [; ;debouncer.h: 34: int change;
-[; ;debouncer.h: 35: } debouncer_t;
-[; ;debouncer.h: 37: extern debouncer_t debo;
-[; ;debouncer.h: 39: void debounce(debouncer_t *debouncer);
-[; ;pin_manager.h: 132: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 144: void PIN_MANAGER_IOC(void);
-"21 debouncer.c
+[; ;debouncer.h: 35: int (*getKey)(void);
+[; ;debouncer.h: 36: } debouncer_t;
+[; ;debouncer.h: 38: extern debouncer_t debo;
+[; ;debouncer.h: 40: void debounce(debouncer_t *debouncer);
+"20 debouncer.c
 [v _debounce `(v ~T0 @X0 1 ef1`*S958 ]
-"22
-{
-[; ;debouncer.c: 21: void debounce(debouncer_t *debouncer)
-[; ;debouncer.c: 22: {
-[e :U _debounce ]
 "21
+{
+[; ;debouncer.c: 20: void debounce(debouncer_t *debouncer)
+[; ;debouncer.c: 21: {
+[e :U _debounce ]
+"20
 [v _debouncer `*S958 ~T0 @X0 1 r1 ]
-"22
+"21
 [f ]
-[; ;debouncer.c: 23: debouncer->sw = PORTCbits.RC4;
-"23
-[e = . *U _debouncer 2 -> . . _PORTCbits 0 4 `i ]
-[; ;debouncer.c: 25: if (debouncer->sw == debouncer->debounced) {
-"25
+[; ;debouncer.c: 22: debouncer->sw = debouncer->getKey();
+"22
+[e = . *U _debouncer 2 ( *U . *U _debouncer 4 ..  ]
+[; ;debouncer.c: 24: if (debouncer->sw == debouncer->debounced) {
+"24
 [e $ ! == . *U _debouncer 2 . *U _debouncer 1 960  ]
 {
-[; ;debouncer.c: 26: if (debouncer->debounced) {
-"26
+[; ;debouncer.c: 25: if (debouncer->debounced) {
+"25
 [e $ ! != . *U _debouncer 1 -> 0 `i 961  ]
 {
-[; ;debouncer.c: 27: debouncer->counter = 100/5;
-"27
+[; ;debouncer.c: 26: debouncer->counter = 100/5;
+"26
 [e = . *U _debouncer 0 / -> 100 `i -> 5 `i ]
-"28
+"27
 }
-[; ;debouncer.c: 28: } else {
+[; ;debouncer.c: 27: } else {
 [e $U 962  ]
 [e :U 961 ]
 {
-[; ;debouncer.c: 29: debouncer->counter = 10/5;
-"29
+[; ;debouncer.c: 28: debouncer->counter = 10/5;
+"28
 [e = . *U _debouncer 0 / -> 10 `i -> 5 `i ]
-"30
+"29
 }
 [e :U 962 ]
-"31
+"30
 }
-[; ;debouncer.c: 30: }
-[; ;debouncer.c: 31: } else {
+[; ;debouncer.c: 29: }
+[; ;debouncer.c: 30: } else {
 [e $U 963  ]
 [e :U 960 ]
 {
-[; ;debouncer.c: 32: if (--debouncer->counter == 0) {
-"32
+[; ;debouncer.c: 31: if (--debouncer->counter == 0) {
+"31
 [e $ ! == =- . *U _debouncer 0 -> 1 `i -> 0 `i 964  ]
 {
-[; ;debouncer.c: 33: debouncer->debounced = debouncer->sw;
-"33
+[; ;debouncer.c: 32: debouncer->debounced = debouncer->sw;
+"32
 [e = . *U _debouncer 1 . *U _debouncer 2 ]
-[; ;debouncer.c: 34: debouncer->change = 1;
-"34
+[; ;debouncer.c: 33: debouncer->change = 1;
+"33
 [e = . *U _debouncer 3 -> 1 `i ]
-[; ;debouncer.c: 35: if (debouncer->debounced) {
-"35
+[; ;debouncer.c: 34: if (debouncer->debounced) {
+"34
 [e $ ! != . *U _debouncer 1 -> 0 `i 965  ]
 {
-[; ;debouncer.c: 36: debouncer->counter = 100/5;
-"36
+[; ;debouncer.c: 35: debouncer->counter = 100/5;
+"35
 [e = . *U _debouncer 0 / -> 100 `i -> 5 `i ]
-"37
+"36
 }
-[; ;debouncer.c: 37: } else {
+[; ;debouncer.c: 36: } else {
 [e $U 966  ]
 [e :U 965 ]
 {
-[; ;debouncer.c: 38: debouncer->counter = 10/5;
-"38
+[; ;debouncer.c: 37: debouncer->counter = 10/5;
+"37
 [e = . *U _debouncer 0 / -> 10 `i -> 5 `i ]
-"39
+"38
 }
 [e :U 966 ]
-"40
+"39
 }
 [e :U 964 ]
-"41
+"40
 }
 [e :U 963 ]
+[; ;debouncer.c: 38: }
 [; ;debouncer.c: 39: }
 [; ;debouncer.c: 40: }
 [; ;debouncer.c: 41: }
-[; ;debouncer.c: 42: }
-"42
+"41
 [e :UE 959 ]
 }

@@ -10033,6 +10033,7 @@ int counter;
 int debounced;
 int sw;
 int change;
+int (*getKey)(void);
 } debouncer_t;
 
 extern debouncer_t debo;
@@ -10120,7 +10121,6 @@ void TMR0_CallBack(void)
 {
 
 
-do { LATCbits.LATC5 = ~LATCbits.LATC5; } while(0);
 debounce(&debo);
 
 if(TMR0_InterruptHandler)

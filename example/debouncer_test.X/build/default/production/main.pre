@@ -9901,6 +9901,7 @@ int counter;
 int debounced;
 int sw;
 int change;
+int (*getKey)(void);
 } debouncer_t;
 
 extern debouncer_t debo;
@@ -10051,12 +10052,16 @@ void OSCILLATOR_Initialize(void);
 # 95
 void WDT_Initialize(void);
 
-# 14 "main.c"
+# 17 "main.c"
+int button(void) {
+return PORTCbits.RC4;
+}
+
 debouncer_t debo;
 
 void main(void) {
 
-
+debo.getKey = (*button);
 
 
 SYSTEM_Initialize();
@@ -10066,7 +10071,6 @@ PIN_MANAGER_Initialize();
 (INTCONbits.GIE = 1);
 
 while ( 1 ) {
-
 if ( debo.sw ) {
 do { LATAbits.LATA5 = 0; } while(0);
 } else {

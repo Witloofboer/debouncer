@@ -43,20 +43,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _T0CON0bits `VS57 ~T0 @X0 0 e@23 ]
 "314 mcc_generated_files/tmr0.h
 [v _TMR0_CallBack `(v ~T0 @X0 0 ef ]
-"2329 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f18345.h
-[s S118 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S118 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"2328
-[u S117 `S118 1 ]
-[n S117 . . ]
-"2340
-[v _LATCbits `VS117 ~T0 @X0 0 e@270 ]
+[v F7869 `(i ~T0 @X0 0 tf ]
 "30 mcc_generated_files/../debouncer.h
-[s S958 `i 1 `i 1 `i 1 `i 1 ]
-[n S958 debouncer counter debounced sw change ]
-"39
+[s S958 `i 1 `i 1 `i 1 `i 1 `*F7869 1 ]
+[n S958 debouncer counter debounced sw change getKey ]
+"40
 [v _debounce `(v ~T0 @X0 0 ef1`*S958 ]
-"37
+"38
 [v _debo `S958 ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -7617,9 +7610,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;debouncer.h: 32: int debounced;
 [; ;debouncer.h: 33: int sw;
 [; ;debouncer.h: 34: int change;
-[; ;debouncer.h: 35: } debouncer_t;
-[; ;debouncer.h: 37: extern debouncer_t debo;
-[; ;debouncer.h: 39: void debounce(debouncer_t *debouncer);
+[; ;debouncer.h: 35: int (*getKey)(void);
+[; ;debouncer.h: 36: } debouncer_t;
+[; ;debouncer.h: 38: extern debouncer_t debo;
+[; ;debouncer.h: 40: void debounce(debouncer_t *debouncer);
 "59 mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler `*F7855 ~T0 @X0 1 e ]
 [; ;tmr0.c: 59: void (*TMR0_InterruptHandler)(void);
@@ -7773,54 +7767,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.c: 136: {
 [e :U _TMR0_CallBack ]
 [f ]
-[; ;tmr0.c: 139: do { LATCbits.LATC5 = ~LATCbits.LATC5; } while(0);
+[; ;tmr0.c: 139: debounce(&debo);
 "139
-[e :U 969 ]
-{
-[e = . . _LATCbits 0 5 -> ~ -> . . _LATCbits 0 5 `i `uc ]
-}
-[e :U 968 ]
-[; ;tmr0.c: 140: debounce(&debo);
-"140
 [e ( _debounce (1 &U _debo ]
-[; ;tmr0.c: 142: if(TMR0_InterruptHandler)
+[; ;tmr0.c: 141: if(TMR0_InterruptHandler)
+"141
+[e $ ! != _TMR0_InterruptHandler -> -> 0 `i `*F7855 967  ]
+[; ;tmr0.c: 142: {
 "142
-[e $ ! != _TMR0_InterruptHandler -> -> 0 `i `*F7855 970  ]
-[; ;tmr0.c: 143: {
-"143
 {
-[; ;tmr0.c: 144: TMR0_InterruptHandler();
-"144
+[; ;tmr0.c: 143: TMR0_InterruptHandler();
+"143
 [e ( *U _TMR0_InterruptHandler ..  ]
-"145
+"144
 }
-[e :U 970 ]
+[e :U 967 ]
+[; ;tmr0.c: 144: }
 [; ;tmr0.c: 145: }
-[; ;tmr0.c: 146: }
-"146
+"145
 [e :UE 966 ]
 }
-"148
+"147
 [v _TMR0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;tmr0.c: 148: void TMR0_SetInterruptHandler(void* InterruptHandler){
+[; ;tmr0.c: 147: void TMR0_SetInterruptHandler(void* InterruptHandler){
 [e :U _TMR0_SetInterruptHandler ]
 [v _InterruptHandler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;tmr0.c: 149: TMR0_InterruptHandler = InterruptHandler;
-"149
+[; ;tmr0.c: 148: TMR0_InterruptHandler = InterruptHandler;
+"148
 [e = _TMR0_InterruptHandler -> _InterruptHandler `*F7855 ]
-[; ;tmr0.c: 150: }
-"150
-[e :UE 971 ]
+[; ;tmr0.c: 149: }
+"149
+[e :UE 968 ]
 }
-"152
+"151
 [v _TMR0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 {
-[; ;tmr0.c: 152: void TMR0_DefaultInterruptHandler(void){
+[; ;tmr0.c: 151: void TMR0_DefaultInterruptHandler(void){
 [e :U _TMR0_DefaultInterruptHandler ]
 [f ]
-[; ;tmr0.c: 155: }
-"155
-[e :UE 972 ]
+[; ;tmr0.c: 154: }
+"154
+[e :UE 969 ]
 }

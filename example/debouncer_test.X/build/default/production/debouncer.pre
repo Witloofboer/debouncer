@@ -9901,22 +9901,17 @@ int counter;
 int debounced;
 int sw;
 int change;
+int (*getKey)(void);
 } debouncer_t;
 
 extern debouncer_t debo;
 
 void debounce(debouncer_t *debouncer);
 
-# 132 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
-# 144
-void PIN_MANAGER_IOC(void);
-
-# 21 "debouncer.c"
+# 20 "debouncer.c"
 void debounce(debouncer_t *debouncer)
 {
-debouncer->sw = PORTCbits.RC4;
+debouncer->sw = debouncer->getKey();
 
 if (debouncer->sw == debouncer->debounced) {
 if (debouncer->debounced) {

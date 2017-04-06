@@ -1,6 +1,6 @@
 /*
  * File:   main.c
- * Author: cedric.busschots
+ * Author: Witloofboer
  *
  * Created on 29 maart 2017, 11:49
  */
@@ -11,11 +11,18 @@
 #include "mcc_generated_files/mcc.h"
 #include "mcc_generated_files/pin_manager.h"
 
+
+// Button_GetValue() is a define, not a function, so no function pointers were 
+// available
+int button(void) {
+    return Button_GetValue();
+}
+
 debouncer_t debo;
 
 void main(void) {
     
-    //uint8_t sw;
+    debo.getKey = (*button);
     
     // Initialize the microcontroller
     SYSTEM_Initialize();
@@ -25,7 +32,6 @@ void main(void) {
     INTERRUPT_GlobalInterruptEnable();
     
     while ( 1 ) {
-        //sw = Button_GetValue();
         if ( debo.sw ) {
             LED_SetLow();
         } else {

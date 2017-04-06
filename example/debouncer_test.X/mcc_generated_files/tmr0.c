@@ -136,7 +136,6 @@ void TMR0_CallBack(void)
 {
     // Add your custom callback code here
 
-    IO_RC5_Toggle();
     debounce(&debo);
     
     if(TMR0_InterruptHandler)
