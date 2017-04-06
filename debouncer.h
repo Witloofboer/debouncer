@@ -28,7 +28,8 @@ typedef struct debouncer {
 	int counter;
 	int debounced;
 	int sw;
-    int change;
+	int change;
+	int (*getKey)(void);
 } debouncer_t;
 
 extern debouncer_t debo;

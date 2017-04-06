@@ -18,7 +18,7 @@
 
 void debounce(debouncer_t *debouncer)
 {
-	debouncer->sw = Button_GetValue();
+	debouncer->sw = debouncer->getKey();
 
 	if (debouncer->sw == debouncer->debounced) {
 		if (debouncer->debounced) {
