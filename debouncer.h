@@ -6,11 +6,6 @@
  *  http://www.ganssle.com/debouncing.htm.
  * 
  * 
- * (c) Witloofboer 2017
- * 
- * LICENSING: Everyone is free to use this code EXCEPT if you want to use it 
- * to operate weapons, nuclear facilities, life support or other mission
- * critical applications where human or animal life or property may be at stake.
  */
 
 // Prevent multiple inclusions
